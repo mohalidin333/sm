@@ -4,6 +4,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { supabase } from "../lib/supabase";
+import { LoaderCircle } from "lucide-react";
 
 // Function to get the user's IP address using ipify
 const getUserIP = async () => {
@@ -15,6 +16,7 @@ const getUserIP = async () => {
 export default function Main() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [isSend, setIsSend] = useState(false);
 
   // Function to handle email input change
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -31,7 +33,11 @@ export default function Main() {
       return;
     }
 
+    setIsSend(true);
+
     try {
+    
+
       // Get the user's IP address
       const ipAddress = await getUserIP();
 
@@ -61,12 +67,16 @@ export default function Main() {
       }
 
       // Clear the email input after submission
+    
       setEmail("");
       setError(null);
       alert("Email submitted successfully!");
     } catch (err) {
       setError("Error submitting email.");
+
       console.error(err);
+    }finally {
+      setIsSend(false); // Hide the loading icon
     }
   }
 
@@ -130,9 +140,10 @@ export default function Main() {
             </div>
             <button
               type="submit"
-              className="hover:shadow-[0_0_10px_#F9766A] border border-orange-800 bg-orange-500/90 py-2 px-4 text-white rounded-md"
+              className={`${isSend && "bg-orange-500/40 pointer-events-none"} hover:shadow-[0_0_10px_#F9766A] border border-orange-800 bg-orange-500/90 py-2 px-4 text-white rounded-md flex gap-2 items-center`}
             >
-              Join Waitlist
+              Join Waitlist{" "}
+              {isSend && <LoaderCircle className="animate-spin" size={20} />}
             </button>
           </form>
 
