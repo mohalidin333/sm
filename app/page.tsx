@@ -112,7 +112,7 @@ export default function Main() {
             onSubmit={handleSubmit}
           >
             <label htmlFor="email">Enter your email to get early access</label>
-            <div className="relative">
+            <div className="relative w-full">
               <input
                 type="email"
                 value={email}
