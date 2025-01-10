@@ -1,0 +1,11 @@
+{
+    "marscode.advanced": {
+        "logLevel": "info",
+        "logFile": false,
+        "outOfScopeProcess": false,
+        "debounceInterval": 125,
+        "proxyMode": "system",
+        "proxyUrl": ""
+    },
+    "CodeGPT.apiKey": "Custom"
+}

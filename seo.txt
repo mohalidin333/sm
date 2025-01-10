@@ -1,0 +1,153 @@
+ {/* SEO Metadata */}
+      <Head>
+        <title>Boost Productivity and Eye Health | Early Access</title>
+        <meta
+          name="description"
+          content="Maximize your productivity and enhance your eye health with our innovative solution. Join the waitlist for early access!"
+        />
+        <meta name="keywords" content="productivity, eye health, wellness, early access" />
+        <meta name="author" content="Mohalidin" />
+        <meta property="og:title" content="Boost Productivity and Eye Health | Early Access" />
+        <meta
+          property="og:description"
+          content="Unlock your potential with our solution for productivity and eye health. Join our waitlist today!"
+        />
+        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Boost Productivity and Eye Health | Early Access" />
+        <meta
+          name="twitter:description"
+          content="Unlock your potential with our solution for productivity and eye health. Join our waitlist today!"
+        />
+        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://yourwebsite.com" />
+
+        {/* Structured Data (Schema) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "Boost Productivity and Eye Health",
+              "description": "Maximize your productivity and enhance your eye health with our innovative solution. Join the waitlist for early access.",
+              "offers": {
+                "@type": "Offer",
+                "url": "https://yourwebsite.com",
+                "priceCurrency": "USD",
+                "price": "29.99"
+              }
+            }
+          `}
+        </script>
+      </Head>
+
+
+      // for blog post
+
+      <Head>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "My Awesome Website",
+        "description": "This is the description of my awesome website.",
+        "url": "https://mywebsite.com",
+      }),
+    }}
+  />
+</Head>
+
+// analytics
+
+<Head>
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
+  ></script>
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
+      `,
+    }}
+  />
+</Head>
+
+//npm install next-sitemap
+//next-sitemap.js
+module.exports = {
+  siteUrl: 'https://yourwebsite.com', // Replace with your site's URL
+  generateRobotsTxt: true, // This generates the robots.txt file automatically
+  changefreq: 'daily', // You can set this to daily, weekly, etc.
+  priority: 0.7, // This defines the priority for pages (1 is the highest)
+  sitemapSize: 5000, // This is for splitting large sitemaps (default is 5000 URLs per file)
+};
+
+module.exports = {
+  siteUrl: 'https://yourwebsite.com',
+  generateRobotsTxt: true,
+  robotsTxtOptions: {
+    policies: [
+      { userAgent: '*', disallow: ['/admin', '/login'] },
+      { userAgent: 'Googlebot', allow: ['/public'] },
+    ],
+  },
+  changefreq: 'daily',
+  priority: 0.7,
+  sitemapSize: 5000,
+};
+
+
+//robots.txt
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Allow: /public/
+
+Sitemap: https://yourwebsite.com/sitemap.xml
+
+
+
+
+
+
+// how to submit sitemap
+
+Yes, after generating your sitemap and ensuring it’s accessible via a URL (such as `https://yourwebsite.com/sitemap.xml`), you can submit it to Google Search Console to help Google crawl and index your site more efficiently.
+
+Here’s how to submit your sitemap to Google Search Console:
+
+### 1. **Verify Your Site in Google Search Console** (if not done already)
+Before submitting a sitemap, make sure your site is verified in Google Search Console. If you haven't done that yet, follow these steps:
+- Go to [Google Search Console](https://search.google.com/search-console).
+- Add your website property (e.g., `https://yourwebsite.com`).
+- Verify ownership of your site via the recommended method (HTML file, DNS verification, etc.).
+
+### 2. **Submit Your Sitemap**
+Once your site is verified:
+
+1. Go to [Google Search Console](https://search.google.com/search-console).
+2. Select the property (website) you want to submit the sitemap for.
+3. In the left sidebar, under the **Index** section, click on **Sitemaps**.
+4. In the **Add a new sitemap** section, enter the URL of your sitemap (e.g., `https://yourwebsite.com/sitemap.xml`).
+5. Click **Submit**.
+
+### 3. **Check the Status**
+After submission, Google will process the sitemap, and you should see the status under the **Sitemaps** section in Google Search Console:
+- **Success**: Google successfully retrieved your sitemap.
+- **Error**: There was an issue with your sitemap. You’ll be notified about the problem, and you can fix it accordingly.
+
+### Why Submit a Sitemap?
+- **Helps Google discover your content**: Submitting your sitemap makes it easier for Google to crawl your pages, especially when your site has dynamic content or new pages.
+- **Track submission status**: Google Search Console will show if your sitemap was successfully fetched and indexed, helping you monitor your site’s indexing status.
+- **Fix issues faster**: If there are problems with your sitemap (like broken links or inaccessible URLs), Google will notify you.
+
+### Summary
+Yes, after generating your sitemap, you just need to submit the sitemap URL (like `https://yourwebsite.com/sitemap.xml`) to Google Search Console, and it will help Google crawl and index your site more efficiently.

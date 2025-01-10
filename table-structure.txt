@@ -1,0 +1,96 @@
+"use client";
+
+import { DollarSign } from "lucide-react";
+import DashboardCard from "./components/DashboardCard";
+import { DashboardCardProps } from "./components/DashboardCard";
+import { useState } from "react";
+import DynamicTable from "@/components/DynamicTable";
+import { DynamicTableProps } from "@/components/DynamicTable";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+// view action
+export const handleView = (row: string[]) => {
+  console.log(row);
+};
+
+//  delete action
+export const handleDelete = (row: string[]) => {
+  console.log(row);
+};
+
+export default function Dashboard() {
+  const [cardData, setCardData] = useState<DashboardCardProps[]>([
+    {
+      title: "Total Income",
+      icon: <DollarSign className="h-4 w-4 text-muted-foreground" />,
+      data: "90,000",
+      description: "+ 90% from last month",
+    },
+    {
+      title: "Total Income",
+      icon: <DollarSign className="h-4 w-4 text-muted-foreground" />,
+      data: "90,000",
+      description: "+ 90% from last month",
+    },
+    {
+      title: "Total Income",
+      icon: <DollarSign className="h-4 w-4 text-muted-foreground" />,
+      data: "90,000",
+      description: "+ 90% from last month",
+    },
+    {
+      title: "Total Income",
+      icon: <DollarSign className="h-4 w-4 text-muted-foreground" />,
+      data: "90,000",
+      description: "+ 90% from last month",
+    },
+  ]);
+
+  const [tableContent, setTableContent] = useState<DynamicTableProps>({
+    tableHead: ["Name", "Location", "Age", ""],
+    tableRow: [
+      ["John", "New York", "28"],
+      ["Jane", "Los Angeles", "25"],
+      ["Mike", "Chicago", "32"],
+      ["Emily", "Houston", "29"],
+      ["David", "Miami", "35"],
+      ["Sarah", "Seattle", "27"],
+      ["Alex", "Boston", "31"],
+      ["Olivia", "San Francisco", "26"],
+    ],
+    actions: [
+      { action: handleDelete, text: "View" },
+      { action: handleDelete, text: "Delete" },
+    ],
+  });
+
+  return (
+    <div className="flex flex-col gap-[1rem]">
+      <h1 className="text-xl">Dashboard</h1>
+
+      <div className="flex flex-col gap-[1rem]">
+        <div className="flex items-center gap-[1rem] flex-wrap">
+          {cardData.map((card, index) => (
+            <DashboardCard key={index} {...card} />
+          ))}
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Customers</CardTitle>
+            <CardDescription>List of paid customers</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DynamicTable {...tableContent} />
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
