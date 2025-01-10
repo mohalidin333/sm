@@ -7,7 +7,7 @@ import { supabase } from "../lib/supabase";
 
 // Function to get the user's IP address using ipify
 const getUserIP = async () => {
-  const response = await fetch('https://api.ipify.org?format=json');
+  const response = await fetch("https://api.ipify.org?format=json");
   const data = await response.json();
   return data.ip;
 };
@@ -19,6 +19,7 @@ export default function Main() {
   // Function to handle email input change
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value);
+    document.querySelector(".cat")?.classList.toggle("active");
   }
 
   // Function to handle email form submission
@@ -83,7 +84,10 @@ export default function Main() {
           content="productivity, eye health, wellness, early access"
         />
         <meta name="author" content="Mohalidin" />
-        <meta property="og:title" content="Boost Productivity and Eye Health | Early Access" />
+        <meta
+          property="og:title"
+          content="Boost Productivity and Eye Health | Early Access"
+        />
         <meta
           property="og:description"
           content="Unlock your potential with our solution for productivity and eye health. Join our waitlist today!"
@@ -95,16 +99,12 @@ export default function Main() {
         <div className="flex flex-col gap-4">
           <h1 className="leading-[1.2] sm:text-[3rem] text-[2.5rem]">
             A Solution for <br />
-            <span className="bg-gradient-to-t from-red-400 to-yellow-400 bg-clip-text text-transparent">
-              Productivity
-            </span>{" "}
-            and{" "}
-            <span className="bg-gradient-to-t from-red-400 to-yellow-400 bg-clip-text text-transparent">
-              Eye Health.
-            </span>
+            <span className="text-orange-500">Productivity</span> and{" "}
+            <span className="text-orange-500">Eye Health.</span>
           </h1>
           <p className="sm:text-xl text-gray-800">
-            Unlock your potential by maximizing your productivity, and enhancing your eye health.
+            Unlock your potential by maximizing your productivity, and enhancing
+            your eye health.
           </p>
 
           <form
@@ -112,7 +112,7 @@ export default function Main() {
             onSubmit={handleSubmit}
           >
             <label htmlFor="email">Enter your email to get early access</label>
-            <div className="relative w-full">
+            <div className="relative">
               <input
                 type="email"
                 value={email}
@@ -130,16 +130,14 @@ export default function Main() {
             </div>
             <button
               type="submit"
-              className="hover:shadow-[0_0_10px_#F9766A] border border-orange-800 bg-gradient-to-t from-red-400 to-orange-400 py-2 px-4 text-white rounded-md"
+              className="hover:shadow-[0_0_10px_#F9766A] border border-orange-800 bg-orange-500/90 py-2 px-4 text-white rounded-md"
             >
               Join Waitlist
             </button>
           </form>
 
           {/* Display error if any */}
-          <div>
-            {error && <p>Error: {error}</p>}
-          </div>
+          <div>{error && <p>Error: {error}</p>}</div>
 
           <p>Made with ❤️ by Mohalidin</p>
         </div>
